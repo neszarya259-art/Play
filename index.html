@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NexaVerse Play — Full Track, Gaya Komik</title>
+  <meta name="description" content="NexaVerse Play: pemutar musik bergaya komik untuk streaming full track Spotify Premium di browser.">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("nv_theme")||"light"}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="landing">
+  <header class="topnav">
+    <a class="logo" href="index.html" aria-label="NexaVerse Play, beranda">
+      <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+      <span class="logo__word">NexaVerse <em>Play</em></span>
+    </a>
+    <nav class="topnav__links" aria-label="Navigasi utama">
+      <a href="#fitur">Fitur</a>
+      <a href="#cara">Cara Kerja</a>
+      <button class="btn btn--round" type="button" data-theme-toggle aria-label="Ganti tema">
+        <svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn--mint" href="login.html">Masuk</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero__text">
+        <span class="hero__kicker">Musik + Komik = Full Track!</span>
+        <h1>Dengerin Lagu Full, <span class="hl">Gaya Paper-Ink</span></h1>
+        <p class="hero__lead">Putar lagu Spotify secara penuh langsung di browser. Visualizer bar pastel, tombol stiker, dan mode gelap yang tetap berwarna.</p>
+        <div class="hero__cta">
+          <a class="btn btn--yellow btn--xl" href="login.html">
+            <svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg>
+            <span>Connect with Spotify</span>
+          </a>
+          <a class="btn btn--ghost btn--xl" href="dashboard.html?demo=1">Coba Mode Demo</a>
+        </div>
+        <p class="hero__note">Butuh akun <strong>Spotify Premium</strong> untuk streaming full track.</p>
+      </div>
+
+      <div class="hero__art">
+        <div class="burst-wrap" aria-hidden="true"><div class="burst">POW!<br>FULL<br>TRACK</div></div>
+        <div class="hero-card paper-cut">
+          <svg class="hc-cover" viewBox="0 0 300 300" aria-hidden="true">
+            <rect width="300" height="300" fill="#FFD6BA"/>
+            <circle cx="150" cy="150" r="108" fill="#B8E0D2" stroke="#2B2B2B" stroke-width="10"/>
+            <circle cx="150" cy="150" r="34" fill="#FF9B85" stroke="#2B2B2B" stroke-width="8"/>
+            <path d="M30 42 q30 -22 60 0 t60 0 t60 0" fill="none" stroke="#2B2B2B" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+          <div class="hc-meta">
+            <strong>Sunrise Comic Strip</strong>
+            <small>Pastel Riot</small>
+          </div>
+          <div class="hc-bars" aria-hidden="true">
+            <span style="--d:0s;--h:58%"></span>
+            <span style="--d:.15s;--h:88%"></span>
+            <span style="--d:.3s;--h:40%"></span>
+            <span style="--d:.45s;--h:72%"></span>
+            <span style="--d:.1s;--h:52%"></span>
+            <span style="--d:.25s;--h:96%"></span>
+            <span style="--d:.4s;--h:34%"></span>
+            <span style="--d:.55s;--h:80%"></span>
+            <span style="--d:.2s;--h:64%"></span>
+            <span style="--d:.35s;--h:46%"></span>
+            <span style="--d:.5s;--h:90%"></span>
+            <span style="--d:.05s;--h:38%"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="fitur" aria-labelledby="fiturTitle">
+      <div class="section__head reveal">
+        <h2 id="fiturTitle">Kenapa NexaVerse Play?</h2>
+        <p>Fitur utama untuk pecinta musik yang suka tampilan kertas komik.</p>
+      </div>
+      <div class="features">
+        <article class="feature reveal">
+          <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+          <h3>Full Track Premium</h3>
+          <p>Streaming lagu lengkap lewat Spotify Web Playback SDK, bukan cuplikan 30 detik.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-volume"/></svg></span>
+          <h3>Visualizer Komik</h3>
+          <p>Bar chart pastel yang bergerak mengikuti ritme. Saat jeda, bar kembali tenang.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span>
+          <h3>Liked &amp; Riwayat</h3>
+          <p>Lihat Liked Songs dan Recently Played, lalu simpan lagu favorit langsung dari pemutar.</p>
+        </article>
+        <article class="feature reveal">
+          <span class="feature__icon"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg></span>
+          <h3>Paper Light &amp; Ink Dark</h3>
+          <p>Dua tema yang bisa diganti kapan saja. Pilihanmu tersimpan di browser.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="cara" aria-labelledby="caraTitle">
+      <div class="section__head reveal">
+        <h2 id="caraTitle">Cara Kerja</h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__num">1</span>
+          <div>
+            <h3>Login dengan Spotify</h3>
+            <p>Otorisasi memakai PKCE. Aplikasi tidak pernah menyimpan kata sandi atau Client Secret.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">2</span>
+          <div>
+            <h3>Pilih lagu</h3>
+            <p>Dari Liked Songs, Recently Played, playlist, atau pencarian.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">3</span>
+          <div>
+            <h3>Nikmati full track</h3>
+            <p>Kontrol putar, seek, volume, acak, dan ulangi dari kartu Now Playing.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="cta-band wrap reveal">
+      <h2>Siap bikin dengerin musik jadi komik?</h2>
+      <a class="btn btn--coral btn--xl" href="login.html">Mulai Sekarang</a>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <p><strong>NexaVerse Play</strong> adalah proyek independen dan tidak berafiliasi dengan atau didukung oleh Spotify AB. Spotify adalah merek dagang Spotify AB.</p>
+      <p>Pemutaran full track memerlukan akun Spotify Premium (bukan Lite atau Premium Mini).</p>
+    </div>
+  </footer>
+
+  <div class="auth-overlay" id="authOverlay" role="status" aria-live="polite" hidden>
+    <div class="auth-overlay__card">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="authText">Menghubungkan ke Spotify…</p>
+    </div>
+  </div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

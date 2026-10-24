@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masuk — NexaVerse Play</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("nv_theme")||"light"}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="login">
+  <main class="auth-wrap">
+    <a class="back" href="index.html">← Beranda</a>
+
+    <section class="paper-cut auth-card" aria-labelledby="loginTitle">
+      <a class="logo logo--lg" href="index.html" aria-label="NexaVerse Play">
+        <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+        <span class="logo__word">NexaVerse <em>Play</em></span>
+      </a>
+
+      <h1 id="loginTitle">Masuk ke NexaVerse</h1>
+      <p class="lead">Hubungkan akun Spotify untuk mulai memutar musik. Full track membutuhkan <strong>Spotify Premium</strong>.</p>
+
+      <p class="alert" id="authError" role="alert" hidden></p>
+
+      <button class="btn btn--yellow btn--xl btn--block" id="connectBtn" type="button">
+        <svg class="icon icon--fill" aria-hidden="true"><use href="#i-note"/></svg>
+        <span>Connect with Spotify</span>
+      </button>
+
+      <a class="btn btn--ghost btn--block" href="dashboard.html?demo=1">Coba mode demo</a>
+
+      <p class="fine">Login dilakukan di halaman resmi Spotify. Aplikasi ini hanya menyimpan token akses sementara di tab ini dan tidak pernah melihat kata sandi kamu.</p>
+    </section>
+  </main>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

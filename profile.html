@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Profile — NexaVerse Play</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("nv_theme")||"light"}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="profile">
+  <div class="app">
+    <aside class="sidebar" aria-label="Sidebar">
+      <a class="logo" href="index.html" aria-label="NexaVerse Play, ke beranda">
+        <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+        <span class="logo__word">NexaVerse <em>Play</em></span>
+      </a>
+
+      <nav class="side-nav" aria-label="Menu utama">
+        <a class="nav-item" href="dashboard.html#home" data-nav="home">
+          <svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span>
+        </a>
+        <a class="nav-item" href="dashboard.html#search" data-nav="search">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><span>Search</span>
+        </a>
+        <a class="nav-item" href="dashboard.html#library" data-nav="library">
+          <svg class="icon" aria-hidden="true"><use href="#i-library"/></svg><span>Library</span>
+        </a>
+        <a class="nav-item is-active" href="profile.html" data-nav="profile" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span>
+        </a>
+        <a class="nav-item" href="dashboard.html#settings" data-nav="settings">
+          <svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <div class="sticker-note">
+          <strong>Catatan</strong>
+          <span>Pemutaran dilakukan di Dashboard.</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="app__main">
+      <header class="topbar">
+        <div class="topbar__greet">
+          <p class="kicker">Akunmu</p>
+          <p class="topbar__title">Profil</p>
+        </div>
+        <div class="topbar__right">
+          <button class="btn btn--round" type="button" data-theme-toggle aria-label="Ganti tema">
+            <svg class="icon" aria-hidden="true"><use href="#i-moon" data-theme-icon/></svg>
+          </button>
+          <a class="avatar avatar--sm" id="topAvatar" href="profile.html" aria-label="Profil kamu">
+            <span class="avatar__fallback" id="topAvatarFallback">?</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="demo-banner" id="demoBanner" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+        <span>Mode demo: data contoh.</span>
+        <a href="login.html">Login Spotify</a>
+      </div>
+
+      <main class="content">
+        <section class="profile-hero paper-cut" aria-labelledby="profName">
+          <div class="avatar avatar--xl" id="profAvatar" role="img" aria-label="Foto profil">
+            <span class="avatar__fallback" id="profAvatarFallback">?</span>
+          </div>
+          <div class="profile-hero__info">
+            <span class="badge" id="profPlan">Memuat…</span>
+            <h1 class="profile-hero__name" id="profName">Memuat profil…</h1>
+            <p class="muted" id="profSub">Akun Spotify</p>
+            <a class="btn btn--ghost btn--sm" href="dashboard.html">← Kembali ke Dashboard</a>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Statistik">
+          <article class="stat paper-cut">
+            <span class="stat__num" id="statPlaylists">–</span>
+            <span class="stat__label">Playlist</span>
+          </article>
+          <article class="stat paper-cut">
+            <span class="stat__num" id="statLiked">–</span>
+            <span class="stat__label">Liked Songs</span>
+          </article>
+          <article class="stat paper-cut">
+            <span class="stat__num" id="statArtists">–</span>
+            <span class="stat__label">Top Artists</span>
+          </article>
+          <article class="stat paper-cut">
+            <span class="stat__num" id="statRecent">–</span>
+            <span class="stat__label">Baru diputar</span>
+          </article>
+        </section>
+
+        <section class="profile-tabs" aria-label="Konten profil">
+          <div class="tabs" role="tablist" aria-label="Kategori profil">
+            <button class="tab is-active" id="tab-playlists" type="button" role="tab" data-tab="playlists" aria-selected="true" aria-controls="tabPanel">Playlists</button>
+            <button class="tab" id="tab-liked" type="button" role="tab" data-tab="liked" aria-selected="false" aria-controls="tabPanel" tabindex="-1">Liked</button>
+            <button class="tab" id="tab-artists" type="button" role="tab" data-tab="artists" aria-selected="false" aria-controls="tabPanel" tabindex="-1">Top Artists</button>
+          </div>
+          <div class="tabpanel paper-cut" id="tabPanel" role="tabpanel" aria-labelledby="tab-playlists" aria-live="polite">
+            <p class="status">Memuat data…</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>

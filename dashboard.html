@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Dashboard — NexaVerse Play</title>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("nv_theme")||"light"}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-page="dashboard">
+  <div class="app">
+    <aside class="sidebar" aria-label="Sidebar">
+      <a class="logo" href="index.html" aria-label="NexaVerse Play, ke beranda">
+        <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg></span>
+        <span class="logo__word">NexaVerse <em>Play</em></span>
+      </a>
+
+      <nav class="side-nav" aria-label="Menu utama">
+        <a class="nav-item is-active" href="#home" data-nav="home" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span>
+        </a>
+        <a class="nav-item" href="#search" data-nav="search">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><span>Search</span>
+        </a>
+        <a class="nav-item" href="#library" data-nav="library">
+          <svg class="icon" aria-hidden="true"><use href="#i-library"/></svg><span>Library</span>
+        </a>
+        <a class="nav-item" href="profile.html" data-nav="profile">
+          <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>Profile</span>
+        </a>
+        <a class="nav-item" href="#settings" data-nav="settings">
+          <svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar__foot">
+        <div class="sticker-note">
+          <strong>Tips</strong>
+          <span>Tekan <kbd>Spasi</kbd> untuk putar atau jeda.</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="app__main">
+      <header class="topbar">
+        <div class="topbar__greet">
+          <p class="kicker" id="greetKicker">Selamat datang</p>
+          <h1 class="topbar__title" id="greetName">Halo!</h1>
+        </div>
+        <div class="topbar__right">
+          <span class="badge" id="planBadge" hidden></span>
+          <button class="btn btn--round" type="button" data-theme-toggle aria-label="Ganti tema">
+            <svg class="icon" aria-hidden="true"><use href="#i-moon" data-theme-icon/></svg>
+          </button>
+          <a class="avatar avatar--sm" id="topAvatar" href="profile.html" aria-label="Buka profil">
+            <span class="avatar__fallback" id="topAvatarFallback">?</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="demo-banner" id="demoBanner" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>
+        <span>Mode demo: data contoh, audio tidak diputar.</span>
+        <a href="login.html">Login Spotify</a>
+      </div>
+
+      <main class="content">
+        <!-- ===== HOME ===== -->
+        <section class="view is-active" id="view-home" data-view="home" aria-label="Beranda">
+          <section class="np-card paper-cut" id="nowPlaying" aria-labelledby="npTitle">
+            <div class="np-art">
+              <div class="np-art__frame">
+                <div class="np-art__img" id="npArt" role="img" aria-label="Sampul album"></div>
+                <span class="np-art__tape" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="np-body">
+              <div class="np-top">
+                <div class="np-titles">
+                  <span class="np-kicker">Now Playing</span>
+                  <h2 class="np-title" id="npTitle">Belum ada lagu</h2>
+                  <p class="np-artist" id="npArtist">Pilih lagu dari daftar di bawah</p>
+                </div>
+                <div class="np-modes">
+                  <button class="sticker sticker--sm" id="shuffleBtn" type="button" aria-pressed="false" aria-label="Acak urutan">
+                    <svg class="icon" aria-hidden="true"><use href="#i-shuffle"/></svg>
+                  </button>
+                  <button class="sticker sticker--sm" id="repeatBtn" type="button" aria-pressed="false" aria-label="Ulangi">
+                    <svg class="icon" aria-hidden="true"><use href="#i-repeat"/></svg>
+                    <span class="badge-1" id="repeatBadge" hidden>1</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="np-viz" id="npViz" aria-hidden="true"></div>
+
+              <div class="np-seek">
+                <input class="seek" id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Posisi putar" disabled>
+              </div>
+
+              <div class="np-meta">
+                <div class="np-times">
+                  <span id="curTime">0:00</span>
+                  <span class="np-times__sep">/</span>
+                  <span id="durTime">0:00</span>
+                </div>
+                <label class="np-volume">
+                  <svg class="icon" aria-hidden="true"><use href="#i-volume"/></svg>
+                  <input class="vol" id="volume" type="range" min="0" max="100" step="1" value="60" aria-label="Volume">
+                </label>
+              </div>
+
+              <div class="np-controls">
+                <button class="ctrl" id="likeBtn" type="button" aria-pressed="false" aria-label="Simpan ke Liked Songs">
+                  <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+                </button>
+                <button class="ctrl" id="prevBtn" type="button" aria-label="Sebelumnya">
+                  <svg class="icon icon--fill" aria-hidden="true"><use href="#i-prev"/></svg>
+                </button>
+                <button class="ctrl ctrl--play" id="playBtn" type="button" aria-label="Putar">
+                  <svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg>
+                </button>
+                <button class="ctrl" id="nextBtn" type="button" aria-label="Berikutnya">
+                  <svg class="icon icon--fill" aria-hidden="true"><use href="#i-next"/></svg>
+                </button>
+                <button class="ctrl" id="queueBtn" type="button" aria-expanded="false" aria-controls="queuePanel" aria-label="Lihat antrean">
+                  <svg class="icon" aria-hidden="true"><use href="#i-queue"/></svg>
+                </button>
+              </div>
+
+              <div class="queue" id="queuePanel" hidden>
+                <h3 class="queue__title">Antrean berikutnya</h3>
+                <ol class="track-list track-list--compact" id="queueList"></ol>
+              </div>
+            </div>
+          </section>
+
+          <div class="lists">
+            <section class="panel paper-cut" aria-labelledby="likedTitle">
+              <header class="panel__head">
+                <h2 class="panel__title" id="likedTitle">Liked Songs</h2>
+                <div class="panel__actions">
+                  <span class="count" id="likedCount" aria-live="polite">0</span>
+                  <button class="btn btn--mint btn--sm" id="playLikedBtn" type="button">Putar semua</button>
+                </div>
+              </header>
+              <ol class="track-list" id="likedList" aria-busy="true"></ol>
+            </section>
+
+            <section class="panel paper-cut" aria-labelledby="recentTitle">
+              <header class="panel__head">
+                <h2 class="panel__title" id="recentTitle">Recently Played</h2>
+                <div class="panel__actions">
+                  <span class="count" id="recentCount" aria-live="polite">0</span>
+                </div>
+              </header>
+              <ol class="track-list" id="recentList" aria-busy="true"></ol>
+            </section>
+          </div>
+        </section>
+
+        <!-- ===== SEARCH ===== -->
+        <section class="view" id="view-search" data-view="search" aria-label="Pencarian" hidden>
+          <header class="view__head">
+            <h2>Cari lagu</h2>
+            <p>Cari judul lagu atau nama artis. Maksimal 10 hasil per pencarian.</p>
+          </header>
+          <form class="search" id="searchForm" role="search">
+            <label class="sr-only" for="searchInput">Kata kunci pencarian</label>
+            <input class="search__input" id="searchInput" type="search" maxlength="120" placeholder="Judul lagu atau nama artis…" autocomplete="off">
+            <button class="btn btn--yellow" type="submit">Cari</button>
+          </form>
+          <p class="status" id="searchStatus" role="status"></p>
+          <ol class="track-list" id="searchList"></ol>
+        </section>
+
+        <!-- ===== LIBRARY ===== -->
+        <section class="view" id="view-library" data-view="library" aria-label="Library" hidden>
+          <header class="view__head">
+            <h2>Library</h2>
+            <p>Playlist milikmu. Klik kartu untuk memutar playlist dari awal.</p>
+          </header>
+          <p class="status" id="libraryStatus" role="status"></p>
+          <div class="grid" id="playlistGrid"></div>
+        </section>
+
+        <!-- ===== SETTINGS ===== -->
+        <section class="view" id="view-settings" data-view="settings" aria-label="Pengaturan" hidden>
+          <header class="view__head">
+            <h2>Settings</h2>
+            <p>Atur tampilan dan akun kamu.</p>
+          </header>
+          <div class="settings">
+            <section class="panel paper-cut">
+              <h3 class="panel__title">Tema</h3>
+              <div class="theme-pick" role="group" aria-label="Pilih tema">
+                <button class="sticker" type="button" data-set-theme="light" aria-pressed="true">Paper Light</button>
+                <button class="sticker" type="button" data-set-theme="dark" aria-pressed="false">Ink Dark</button>
+              </div>
+            </section>
+            <section class="panel paper-cut">
+              <h3 class="panel__title">Akun</h3>
+              <p class="muted" id="accountText">Memuat…</p>
+              <button class="btn btn--coral" id="logoutBtn" type="button">Logout</button>
+            </section>
+            <section class="panel paper-cut">
+              <h3 class="panel__title">Syarat pemutaran</h3>
+              <ul class="checklist">
+                <li>Akun Spotify Premium (bukan Lite atau Premium Mini).</li>
+                <li>Browser desktop modern seperti Chrome, Edge, Firefox, atau Safari.</li>
+                <li>Tab ini harus tetap terbuka agar pemutar tetap aktif.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <aside class="mini" id="miniPlayer" aria-label="Pemutar mini">
+    <button class="mini__open" id="miniOpen" type="button" aria-label="Kembali ke kartu Now Playing">
+      <span class="mini__art" id="miniArt" aria-hidden="true"></span>
+      <span class="mini__text">
+        <strong id="miniTitle">Belum ada lagu</strong>
+        <span id="miniArtist">—</span>
+      </span>
+    </button>
+    <div class="mini__ctrls">
+      <button class="ctrl ctrl--sm" id="miniPrev" type="button" aria-label="Sebelumnya">
+        <svg class="icon icon--fill" aria-hidden="true"><use href="#i-prev"/></svg>
+      </button>
+      <button class="ctrl ctrl--sm ctrl--play-sm" id="miniPlayBtn" type="button" aria-label="Putar">
+        <svg class="icon icon--fill" aria-hidden="true"><use href="#i-play"/></svg>
+      </button>
+      <button class="ctrl ctrl--sm" id="miniNext" type="button" aria-label="Berikutnya">
+        <svg class="icon icon--fill" aria-hidden="true"><use href="#i-next"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <div class="modal" id="premiumModal" role="dialog" aria-modal="true" aria-labelledby="premTitle" hidden>
+    <div class="modal__card paper-cut">
+      <div class="burst burst--sm" aria-hidden="true">PREMIUM<br>DULU!</div>
+      <h2 id="premTitle">Butuh Spotify Premium</h2>
+      <p>Akun ini terdeteksi bukan Premium. Web Playback SDK hanya memutar full track untuk akun Premium (bukan Lite atau Premium Mini). Kamu tetap bisa menjelajah library, tetapi pemutaran dinonaktifkan.</p>
+      <div class="modal__actions">
+        <a class="btn btn--yellow" href="dashboard.html?demo=1">Lanjut mode demo</a>
+        <button class="btn btn--ghost" type="button" data-close-modal>Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+</body>
+</html>
